@@ -1,0 +1,23 @@
+##TITLE=Parameter List, ParaVision 6.0.1
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=nmrsu
+$$ 2018-08-02 15:01:19.908 -0400  nmrsu@CZC5467V68
+$$ /opt/PV6.0.1/data/nmrsu/20180802_145925_20180802_HR_T1mapping_NOMN1_1_1/AdjResult/2.16.756.5.5.100.3740619239.139986.1533236445.6/result.jcamp
+$$ process /opt/PV6.0.1/prog/mod/pipe
+##$WB_TABLE=( 6 )
+(<1H:RES-0 deg>, <RF RES 300 1H 112/086 QSN TO AD - Element 1>, 0, 0, 0, 0, 
+13.048, 43.04) (<1H:RES-90 deg>, <RF RES 300 1H 112/086 QSN TO AD - Element 2>
+, 0, 1, 0, 0, 0, 0) (<1H:SUC:1>, <RF CP F2 300 1H M.BR1 ARR[2x2] S RO - 
+Element 1>, 1, 0, 1, 0, 26.160599103256, 22.2610366652258) (<1H:SUC:2>, <RF 
+CP F2 300 1H M.BR1 ARR[2x2] S RO - Element 2>, 1, 1, 2, 0, 21.56, 19.48) 
+(<1H:SUC:3>, <RF CP F2 300 1H M.BR1 ARR[2x2] S RO - Element 3>, 1, 2, 3, 0, 
+18.368, 24.528) (<1H:SUC:4>, <RF CP F2 300 1H M.BR1 ARR[2x2] S RO - Element 4>
+, 1, 3, 4, 0, 26.3199513777927, 31.1582888806438)
+##$PVM_WobbleTmVals=( 4 )
+(26.160599103256, 22.2610366652258) (21.56, 19.48) (18.368, 24.528) 
+(26.3199513777927, 31.1582888806438)
+##$PVM_WobbleShownTmVal=(26.160599103256, 22.2610366652258)
+##END=
+$$ File finished by PARX at 2018-08-02 15:01:19.908 -0400

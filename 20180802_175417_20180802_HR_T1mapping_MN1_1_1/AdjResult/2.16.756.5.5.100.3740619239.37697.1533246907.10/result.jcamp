@@ -1,0 +1,11 @@
+##TITLE=Parameter List, ParaVision 6.0.1
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=nmrsu
+$$ 2018-08-02 17:56:41.206 -0400  nmrsu@CZC5467V68
+$$ /opt/PV6.0.1/data/nmrsu/20180802_175417_20180802_HR_T1mapping_MN1_1_1/AdjResult/2.16.756.5.5.100.3740619239.37697.1533246907.10/result.jcamp
+$$ process /opt/PV6.0.1/prog/mod/pipe
+##$PVM_StudyRefPow=(1.60026225349907, <Adj by AdjRefG (protocol ADJ_REFG)>)
+##END=
+$$ File finished by PARX at 2018-08-02 17:56:41.206 -0400

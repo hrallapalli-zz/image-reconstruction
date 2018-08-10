@@ -1,0 +1,15 @@
+##TITLE=Parameter List, ParaVision 6.0.1
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=nmrsu
+$$ 2018-08-02 16:49:11.099 -0400  nmrsu@CZC5467V68
+$$ /opt/PV6.0.1/data/nmrsu/20180802_145925_20180802_HR_T1mapping_NOMN1_1_1/10/pdata/1/methreco
+$$ process /opt/PV6.0.1/prog/bin/parxserver
+##$RecoMethMode=Default
+##$WeightingMode=positive_mask
+##$MaskWeighting=4
+##$GaussBroadening=1
+$$ @vis= RecoMethMode MethodRecoGroup
+##END=
+$$ File finished by PARX at 2018-08-02 16:49:11.099 -0400

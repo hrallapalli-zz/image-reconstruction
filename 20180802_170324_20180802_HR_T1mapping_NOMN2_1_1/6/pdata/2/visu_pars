@@ -1,0 +1,127 @@
+##TITLE=Parameter List, ParaVision 6.0.1
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=nmrsu
+$$ 2018-08-02 17:46:43.543 -0400  nmrsu@CZC5467V68
+$$ /opt/PV6.0.1/data/nmrsu/20180802_170324_20180802_HR_T1mapping_NOMN2_1_1/6/pdata/2/visu_pars
+$$ process /opt/PV6.0.1/prog/mod/xtip
+##$VisuVersion=3
+##$VisuUid=( 65 )
+<2.16.756.5.5.100.3740619239.2997.1533246403.910>
+##$VisuCreator=( 65 )
+<ParaVision;xtip>
+##$VisuCreatorVersion=( 65 )
+<6.0.1;6.0.1>
+##$VisuCreationDate=<2018-08-02T17:46:43,542-0400>
+$$ @vis= VisuVersion VisuUid VisuCreator VisuCreatorVersion VisuCreationDate
+##$VisuCoreFrameCount=25
+##$VisuCoreDim=2
+##$VisuCoreSize=( 2 )
+100 100
+##$VisuCoreDimDesc=( 2 )
+spatial spatial
+$$ @vis= VisuInstance VisuCoreFrameCount VisuCoreDim VisuCoreSize
+##$VisuCoreExtent=( 2 )
+5 5
+##$VisuCoreFrameThickness=( 1 )
+1
+##$VisuCoreUnits=( 2, 65 )
+<mm> <mm>
+##$VisuCoreOrientation=( 1, 9 )
+-0.157857543263875 0.987461459878608 0.000928056627110742 0.0259282065728042 
+0.005084447156976 -0.999650877307185 -0.987121433329564 -0.15777836876935 
+-0.0264057230514706
+$$ @vis= VisuCoreDimDesc VisuCoreExtent VisuCoreFrameThickness VisuCoreUnits
+##$VisuCorePosition=( 1, 3 )
+-0.924766658272331 1.63729523241105 3.38824605170018
+##$VisuCoreDataMin=( 25 )
+79375336 1012127 142173648 1212268 11503694 44818772 685277 0 0 13924446 0 0 
+0 0 18709872 73100744 1011107 0 0 18662110 117902632 1212596 0 0 20801978
+##$VisuCoreDataMax=( 25 )
+1553790464 200165536 1151019264 715195520 1881245696 1153036416 93868504 
+1798563328 530897440 1344605696 1692294144 328844832 1201111680 625645568 
+1214033280 1270728576 572899200 1297877888 1189123200 1075365248 1897520256 
+865344192 1417098880 1181069824 2039282816
+##$VisuCoreDataOffs=( 25 )
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+$$ @vis= VisuCoreOrientation VisuCorePosition VisuCoreDataMin VisuCoreDataMax
+##$VisuCoreDataSlope=( 25 )
+5.96046447753906e-08 5.96046447753906e-08 3.814697265625e-06 
+3.814697265625e-06 3.72529029846191e-09 5.96046447753906e-08 
+5.96046447753906e-08 1.9073486328125e-06 1.9073486328125e-06 
+1.86264514923096e-09 2.98023223876953e-08 2.98023223876953e-08 
+3.814697265625e-06 3.814697265625e-06 1.86264514923096e-09 
+2.98023223876953e-08 2.98023223876953e-08 3.814697265625e-06 
+3.814697265625e-06 1.86264514923096e-09 1.49011611938477e-08 
+1.49011611938477e-08 3.814697265625e-06 3.814697265625e-06 
+9.31322574615479e-10
+##$VisuCoreDataUnits=( 5, 65 )
+<> <> <ms> <ms> <>
+##$VisuCoreFrameType=( 1 )
+REAL_IMAGE
+$$ @vis= VisuCoreDataOffs VisuCoreDataSlope VisuCoreDataUnits
+##$VisuFGElemComment=( 5, 65 )
+<signal intensity> <std dev of signal intensity> <T1 relaxation time> <std 
+dev of T1 relaxation time> <std dev of the fit>
+##$VisuCoreWordType=_32BIT_SGN_INT
+##$VisuCoreByteOrder=littleEndian
+$$ @vis= VisuCoreFrameType VisuFGElemComment VisuCore VisuCoreWordType
+##$VisuFGOrderDescDim=2
+##$VisuFGOrderDesc=( 2 )
+(5, <FG_ISA>, <T1 saturation recovery>, 0, 2) (5, <FG_ECHO>, <>, 2, 1)
+##$VisuGroupDepVals=( 3 )
+(<VisuCoreDataUnits>, 0) (<VisuFGElemComment>, 0) (<VisuAcqEchoTime>, 0)
+$$ @vis= VisuCoreByteOrder VisuPixel VisuFGOrderDescDim VisuFGOrderDesc
+##$VisuSubjectName=( 65 )
+<20180802_HR_T1mapping_NOMN2>
+##$VisuSubjectId=( 65 )
+<20180802_HR_T1mapping_NOMN2>
+##$VisuSubjectUid=( 65 )
+<2.16.756.5.5.100.3740619239.128208.1533243782.1564>
+$$ @vis= VisuGroupDepVals VisuFrameOrderDesc VisuSubjectName VisuSubjectId
+##$VisuSubjectInstanceCreationDate=(1533243782, 130, -240)
+##$VisuSubjectBirthDate=( 9 )
+<20180802>
+##$VisuSubjectSex=UNKNOWN
+$$ @vis= VisuSubjectUid VisuSubjectInstanceCreationDate VisuSubjectBirthDate
+##$VisuSubjectType=Quadruped
+##$VisuStudyUid=( 65 )
+<2.16.756.5.5.100.3740619239.128208.1533243804.1565>
+##$VisuStudyDate=<2018-08-02T17:03:24,368-0400>
+$$ @vis= VisuSubjectSex VisuSubjectType VisuSubject VisuStudyUid
+##$VisuStudyId=( 65 )
+<20180802_HR_T1mapping>
+##$VisuStudyNumber=1
+##$VisuSubjectWeight=0.001
+##$VisuStudyReferringPhysician=( 65 )
+<nmrsu>
+$$ @vis= VisuStudyDate VisuStudyId VisuStudyNumber VisuSubjectWeight
+##$VisuStudyDescription=( 2048 )
+<\
+>
+##$VisuExperimentNumber=6
+$$ @vis= VisuStudyReferringPhysician VisuStudyDescription VisuStudy
+##$VisuProcessingNumber=2
+##$VisuSeriesDate=<2018-08-02T17:46:43,542-0400>
+##$VisuSubjectPosition=Head_Prone
+$$ @vis= VisuExperimentNumber VisuProcessingNumber VisuSeriesDate
+##$VisuSeriesTypeId=( 65 )
+<DERIVED_ISA>
+##$VisuSeriesComment=( 65 )
+<Parametric image for T1 saturation recovery produced from /opt/P>
+##$VisuSeriesReferenceUid=( 65 )
+<2.16.756.5.5.100.9223372038447911399.31874.1533246353.1>
+$$ @vis= VisuSubjectPosition VisuSeriesTypeId VisuSeriesComment
+##$VisuSeriesReferenceTypeId=( 65 )
+<ACQ_BRUKER_PVM>
+$$ @vis= VisuSeriesReferenceUid VisuSeriesReferenceTypeId VisuSeries
+##$VisuManufacturer=( 65 )
+<Bruker BioSpin MRI GmbH>
+$$ @vis= VisuCoilReceive VisuCoilTransmit VisuContrastAgent VisuManufacturer
+##$VisuAcqEchoTime=( 5 )
+7 21 35 49 63
+$$ @vis= VisuEquipment VisuAcqEchoTime VisuAcquisition VisuMpi VisuDepricated
+$$ @vis= Visu
+##END=
+$$ File finished by PARX at 2018-08-02 17:46:43.543 -0400
