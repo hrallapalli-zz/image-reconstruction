@@ -43,7 +43,7 @@ coilkspace = squeeze(ckdata);
 % protocols, this is [Nx Ny Nc Nte Ntr]
 
 
-%% Reconstruct coil images, assuming fully sampled, 2D cartesian k-space trajectory 
+%% Reconstruct coil images, assuming fully sampled, cartesian k-space trajectory 
 
 image_coil1 = squeeze(fftshift(fftn(ckdata(:,:,:,1,1,:,:))));
 image_coil2 = squeeze(fftshift(fftn(ckdata(:,:,:,1,2,:,:))));
@@ -53,5 +53,5 @@ image_coil4 = squeeze(fftshift(fftn(ckdata(:,:,:,1,4,:,:))));
 
 %% Save kspace data, and reconstructed coil images
 
-save([DIRECTORYNAME '\kspace'], coilkspace);
-save([DIRECTORYNAME '\coilimages'], image_coil1, image_coil2, image_coil3, image_coil4);
+save([DIRECTORYNAME '\kspace'], 'coilkspace');
+save([DIRECTORYNAME '\coilimages'], 'image_coil1', 'image_coil2', 'image_coil3', 'image_coil4');
