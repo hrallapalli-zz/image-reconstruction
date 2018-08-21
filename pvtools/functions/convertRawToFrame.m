@@ -72,7 +72,9 @@ function [ data] = convertRawToFrame( data, Acqp, varargin)
     %% Calculate additional Parameters
     
     % calculate numSelectedReceivers
-    numSelectedReceivers=size(data,1);
+    
+    
+    numSelectedReceivers=size(data,1); %%%%
     
     % Calculating number of elements in higher dimensions
     numDataHighDim=prod(ACQ_size(2:end));    
