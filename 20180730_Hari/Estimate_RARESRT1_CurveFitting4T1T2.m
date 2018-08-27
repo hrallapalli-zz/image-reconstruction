@@ -1,0 +1,158 @@
+% Estimate T1 using RARE SR saturation T1 + T2 map reconstructed from
+% Bruker
+
+disp('RARE SR T1');
+
+% select RARE SR T1 path
+if exist('pname', 'dir')==0
+    pname=uigetdir(pwd, 'Pick a RARE SR T1 Folder');
+end
+
+% amendament '\' to the path name string if there is not
+if pname(end)~= '\'
+    pname=[pname '\'];
+end
+
+% read images 
+if ~isempty(pname)
+    acq.method=bruker_method(pname, 'method', 'Method');
+    acq.te=bruker_method(pname, 'acqp', 'ACQ_echo_time');
+    acq.tr=bruker_method(pname, 'acqp', 'ACQ_repetition_time');
+    acq.fa=bruker_method(pname, 'acqp', 'ACQ_flip_angle');
+    acq.reconv_time=bruker_method(pname, 'acqp', 'ACQ_recov_time');
+    acq.dim=bruker_method(pname, 'method', 'PVM_Matrix');
+        
+    [img, hdr]=read_analyze([pname 'pdata\1\'], 'x2dseq.img');
+    
+    nTE=length(acq.te);
+    nTR=length(acq.tr);
+    nImgPerSlice=nTE*nTR;
+    
+    % average the image from two repetitions
+    TempImg=(img(:,:,1:25)+img(:,:,26:50))/2;        
+end
+
+idxTR=1; % 5 TRs
+idxTE=1; % 5 TEs
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% T1 and T2 estimation
+tempT1SliceImg=[TempImg(:,:,idxTE:nTE:end)]; % for T1 estimation 
+tempT2SliceImg=[TempImg(:,:,(idxTR-1)*nTE+1:idxTR*nTE)]; % for T2 estimation 
+
+tempT1T2Img=zeros(acq.dim(1)*nTR, acq.dim(2)*nTE);
+for i=1:1:nTR
+    for j=1:1:nTE
+        %tempT1T2Img((i-1)*acq.dim(1)+1:i*acq.dim(1), (j-1)*acq.dim(2)+1:j*acq.dim(2))=TempImg(:,:,(i-1)*nTE+j);
+        tempT1T2Img((i-1)*acq.dim(1)+1:i*acq.dim(1), (j-1)*acq.dim(2)+1:j*acq.dim(2))=flipud(TempImg(:,:,(i-1)*nTE+j));
+    end
+end
+
+tempT1=reshape(tempT1SliceImg, acq.dim(1), acq.dim(2)*nTR);
+tempT2=reshape(tempT2SliceImg, acq.dim(1), acq.dim(2)*nTE);
+
+figure;
+imshow(tempT1T2Img./max(max(tempT1T2Img)));
+
+figure;
+subplot(2,1,1);
+imshow(tempT1./max(max(tempT1)));
+title('T_1 image');
+subplot(2,1,2);
+imshow(tempT2./max(max(tempT2)));
+title('T_2 image');
+
+RARESR.imgT1=tempT1SliceImg;
+RARESR.imgT2=tempT2SliceImg;
+RARESR.timeT1=acq.reconv_time/1000;
+RARESR.timeT2=acq.te/1000;
+RARESR.dim=acq.dim;
+
+temp=ones(acq.dim(1), acq.dim(2));
+ix=find(temp>0);
+RARESR.TR=acq.tr;
+RARESR.TE=acq.te;
+
+options=optimset('MaxFunEvals', 500, 'MaxIter', 500, 'TolFun', 0.0001);
+
+RARESR.T1=zeros(acq.dim(1), acq.dim(2));
+RARESR.T2=zeros(acq.dim(1), acq.dim(2));
+
+% curve fitting for T1 map
+for i=1:1:length(ix)    
+        
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % T1 estimation 
+    
+    x=squeeze(RARESR.timeT1);
+    [xx,yy]=ind2sub([acq.dim(1), acq.dim(2)], ix(i));
+    y=squeeze(RARESR.imgT1(xx,yy,:))';
+    
+    x0=[1.8, y(end)*3, 100]; % T1, S0, readout FA, Inversion factor    
+    [p, fval, exitflag]=fminsearch('Func_RARESR_T1fit', x0, [], RARESR.timeT1, y);
+    
+    RARESR.T1(xx,yy)=p(1);
+    RARESR.S0T1(xx,yy)=p(2);
+    RARESR.AT1(xx,yy)=p(3);
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % T2 estimation 
+    
+    x=squeeze(RARESR.timeT2);
+    [xx,yy]=ind2sub([acq.dim(1), acq.dim(2)], ix(i));
+    y=squeeze(RARESR.imgT2(xx,yy,:))';
+    
+    x0=[0.05, y(end)*3, 100]; % T2, S0, readout FA, Inversion factor    
+    [p, fval, exitflag]=fminsearch('Func_RARESR_T2fit', x0, [], RARESR.timeT2, y);
+    
+    RARESR.T2(xx,yy)=p(1);
+    RARESR.S0T2(xx,yy)=p(2);
+    RARESR.AT2(xx,yy)=p(3);
+    
+end
+
+temp=[pname 'pdata\1\RareSR_TE' num2str(idxTE, '%.1d') '_TR' num2str(idxTR, '%.1d') '.mat'];
+save(temp, 'RARESR');
+
+%%
+figure;
+subplot(1,2,1);
+%figure('position', [0,0,500,500]);
+%set(gca,'position',[0 0 1 1]);
+colormap_range=64; % default colormap_range is 64, but change it to your needs
+[ColorMatrix]=ColorMap4ParameterMatrix(RARESR.T1, 0, 4);
+[n,xout] =hist(ColorMatrix(:), colormap_range);   % hist intensities according to the colormap range
+[val ind]=sort(abs(xout)); % sort according to values closest to zero
+j = jet;
+j(ind(1),:) = [ 0 0 0 ]; % also see comment below
+% you can also use instead something like j(ind(1:whatever),:)=ones(whatever,3);
+image(ColorMatrix);
+colormap(j);
+axis image;
+set(gca, 'XTickLabel', []);
+set(gca, 'YTickLabel', []);
+set(gca, 'XTick', []);
+set(gca, 'YTick', []);
+title('T_1 Map');
+colorbar('YTick', 0:16:64, 'YTickLabel', {'0', '1.0 s', '2.0 s', '3.0 s', '4.0 s'});
+
+subplot(1,2,2);
+%figure('position', [0,0,500,500]);
+%set(gca,'position',[0 0 1 1]);
+colormap_range=64; % default colormap_range is 64, but change it to your needs
+[ColorMatrix]=ColorMap4ParameterMatrix(RARESR.T2, 0, 0.100);
+[n,xout] =hist(ColorMatrix(:), colormap_range);   % hist intensities according to the colormap range
+[val ind]=sort(abs(xout)); % sort according to values closest to zero
+j = jet;
+j(ind(1),:) = [ 0 0 0 ]; % also see comment below
+% you can also use instead something like j(ind(1:whatever),:)=ones(whatever,3);
+image(ColorMatrix);
+colormap(j);
+axis image;
+set(gca, 'XTickLabel', []);
+set(gca, 'YTickLabel', []);
+set(gca, 'XTick', []);
+set(gca, 'YTick', []);
+title('T_2 Map');
+h=colorbar('YTick', 0:16:64, 'YTickLabel', {'0', '25 ms', '50 ms', '75 ms', '100 ms'});
+

@@ -1,0 +1,31 @@
+##TITLE=Parameter List, ParaVision 6.0.1
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=nmrsu
+$$ 2018-07-29 16:44:26.923 -0400  nmrsu@CZC5467V68
+$$ /opt/PV6.0.1/data/nmrsu/20180729_121345_HR_T1mapping_test_1_1/24/pdata/2/d3proc
+$$ process /opt/PV6.0.1/prog/mod/xtip
+##$SEQTYPE=slices
+##$DATTYPE=ip_int
+##$IM_SIX=200
+##$IM_SIY=200
+##$IM_SIZ=50
+##$IM_SIT=1
+##$SIM_SIX=200
+##$SIM_SIY=200
+##$SIM_SIZ=50
+##$SIM_SIT=1
+##$SIM_X0=0
+##$SIM_Y0=0
+##$SIM_Z0=0
+##$SIM_T0=0
+##$CEN_SLC=25
+##$D3_DESC=( 128 )
+<Parametric image for T1 saturation recovery produced from 
+/opt/PV6.0.1/data/nmrsu/20180729_121345_HR_T1mapping_test_1_1/24/pdat>
+##$PR_STA=( 16 )
+1 1 0.0500000007450581 0 0 0 0 0 0 0 0 0 0 0 0 0
+$$ @vis= DATTYPE IM_SIX IM_SIY IM_SIZ SIM_SIZ SIM_Z0 D3_DESC PR_STA D3
+##END=
+$$ File finished by PARX at 2018-07-29 16:44:26.924 -0400
