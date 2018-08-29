@@ -4,6 +4,11 @@
 clear all;
 close all;
 
+if exist('addBrukerPaths') == 0
+    addpath G:\Code\Git\image-reconstruction\pvtools
+    addBrukerPaths
+end
+
 disp('RARE SR T1 - Estimated from Bruker ISA');
 
 % select RARE SR T1 ISA estimated path

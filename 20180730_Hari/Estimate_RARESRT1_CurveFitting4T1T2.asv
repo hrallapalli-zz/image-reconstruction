@@ -1,7 +1,5 @@
 % Estimate T1 using RARE SR saturation T1 + T2 map reconstructed from
 % Bruker
-clear all
-close all
 
 disp('RARE SR T1');
 % 
@@ -144,7 +142,7 @@ subplot(1,2,2);
 %figure('position', [0,0,500,500]);
 %set(gca,'position',[0 0 1 1]);
 colormap_range=64; % default colormap_range is 64, but change it to your needs
-[ColorMatrix]=ColorMap4ParameterMatrix(RARESR.T2, 0, 0.25);
+[ColorMatrix]=ColorMap4ParameterMatrix(RARESR.T2, 0, 0.100);
 [n,xout] =hist(ColorMatrix(:), colormap_range);   % hist intensities according to the colormap range
 [val ind]=sort(abs(xout)); % sort according to values closest to zero
 j = jet;
@@ -166,7 +164,7 @@ subplot(1,2,1);
 %figure('position', [0,0,500,500]);
 %set(gca,'position',[0 0 1 1]);
 colormap_range=64; % default colormap_range is 64, but change it to your needs
-[ColorMatrix]=ColorMap4ParameterMatrix(1./RARESR.T1, 0, 4);
+[ColorMatrix]=ColorMap4ParameterMatrix(RARESR.T1, 0, 4);
 [n,xout] =hist(ColorMatrix(:), colormap_range);   % hist intensities according to the colormap range
 [val ind]=sort(abs(xout)); % sort according to values closest to zero
 j = jet;
@@ -179,14 +177,14 @@ set(gca, 'XTickLabel', []);
 set(gca, 'YTickLabel', []);
 set(gca, 'XTick', []);
 set(gca, 'YTick', []);
-title('R_1 Map');
-colorbar('YTick', 0:16:64, 'YTickLabel', {'4.0 s','3.0 s','2.0 s','1.0 s','0'});
+title('T_1 Map');
+colorbar('YTick', 0:16:64, 'YTickLabel', {'0', '1.0 s', '2.0 s', '3.0 s', '4.0 s'});
 
 subplot(1,2,2);
 %figure('position', [0,0,500,500]);
 %set(gca,'position',[0 0 1 1]);
 colormap_range=64; % default colormap_range is 64, but change it to your needs
-[ColorMatrix]=ColorMap4ParameterMatrix(1./RARESR.T2, 0, 100);
+[ColorMatrix]=ColorMap4ParameterMatrix(RARESR.T2, 0, 0.100);
 [n,xout] =hist(ColorMatrix(:), colormap_range);   % hist intensities according to the colormap range
 [val ind]=sort(abs(xout)); % sort according to values closest to zero
 j = jet;
@@ -199,6 +197,6 @@ set(gca, 'XTickLabel', []);
 set(gca, 'YTickLabel', []);
 set(gca, 'XTick', []);
 set(gca, 'YTick', []);
-title('R_2 Map');
-h=colorbar('YTick', 0:16:64, 'YTickLabel', {'100 ms', '75 ms', '50 ms', '25 ms', '0'});
+title('T_2 Map');
+h=colorbar('YTick', 0:16:64, 'YTickLabel', {'0', '25 ms', '50 ms', '75 ms', '100 ms'});
 
